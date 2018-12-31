@@ -94,7 +94,8 @@ public class StudentController {
         twOpenedCourses.setItems(data);
     }
 
-    public void btnRegister(ActionEvent event) {
+    public void btnRegister(ActionEvent event) throws SQLException, ClassNotFoundException {
+        conn = DBUtil.dbConnect();
         String courseID = txCourseID.getText();
         if (!txCourseID.getText().isEmpty()){
             try {
@@ -116,6 +117,7 @@ public class StudentController {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setContentText("Eklendi");
                         alert.showAndWait();
+                        txCourseID.setText("");
                     }
                     stmt3.close();
 
