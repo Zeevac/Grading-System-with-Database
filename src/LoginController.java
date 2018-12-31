@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import util.DBUtil;
@@ -103,7 +104,7 @@ public class LoginController {
             Scene scene = new Scene(myPane);
             Stage stage = new Stage();
             stage.setTitle("Admin Page");
-
+            stage.getIcons().add(new Image("resources/images/admin_icon.png"));
             stage.setScene(scene);
 
             prevStage.close();
@@ -120,6 +121,7 @@ public class LoginController {
             Pane myPane = FXMLLoader.load(getClass().getResource("view/InstructorController.fxml"));
             Scene scene = new Scene(myPane);
             Stage stage = new Stage();
+            stage.getIcons().add(new Image("resources/images/teacher_icon.png"));
             stage.setTitle("Instructor Page");
 
             stage.setScene(scene);
@@ -139,7 +141,7 @@ public class LoginController {
             Scene scene = new Scene(myPane);
             Stage stage = new Stage();
             stage.setTitle("Student Page");
-
+            stage.getIcons().add(new Image("resources/images/student_icon.png"));
             stage.setScene(scene);
 
             prevStage.close();
