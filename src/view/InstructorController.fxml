@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InstructorController">
+    <children>
+        <Label alignment="CENTER" layoutX="14.0" prefHeight="25.0" prefWidth="210.0" style="-fx-font-weight: bold;" text="Add Course" textAlignment="CENTER">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+        <VBox layoutX="14.0" layoutY="28.0" prefHeight="90.0" prefWidth="100.0" AnchorPane.leftAnchor="0.0">
+            <children>
+                <Label prefHeight="30.0" prefWidth="100.0" text="Course ID">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Label>
+                <Label prefHeight="30.0" prefWidth="100.0" text="Course Name">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Label>
+                <Label prefHeight="30.0" prefWidth="100.0" text="Quota">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Label>
+            </children>
+        </VBox>
+        <VBox layoutX="114.0" layoutY="28.0" prefHeight="90.0" prefWidth="100.0">
+            <children>
+                <TextField fx:id="txCourseID" prefHeight="30.0" />
+                <TextField fx:id="txCourseName" prefHeight="30.0" />
+                <TextField fx:id="txQuota" prefHeight="30.0" />
+            </children>
+        </VBox>
+        <Button fx:id="addCourse" layoutX="176.0" layoutY="135.0" mnemonicParsing="false" onAction="#btnCourseAdding" text="Add" />
+        <TableView fx:id="twInstructor" layoutX="232.0" layoutY="28.0" prefHeight="200.0" prefWidth="522.0">
+            <columns>
+                <TableColumn fx:id="instCourseID" prefWidth="174.0" text="Course ID" />
+                <TableColumn fx:id="instCourseName" prefWidth="174.0" text="Course Name" />
+                <TableColumn fx:id="instQuota" prefWidth="174.0" text="Quota" />
+            </columns>
+        </TableView>
+        <TableView fx:id="tableViewStudents" layoutX="232.0" layoutY="312.0" prefHeight="200.0" prefWidth="522.0" AnchorPane.topAnchor="280.0">
+            <columns>
+                <TableColumn fx:id="StudentsTWCourseID" prefWidth="174.0" text="Course ID" />
+                <TableColumn fx:id="StudentsTWStudentID" prefWidth="174.0" text="Student ID" />
+                <TableColumn fx:id="StudentsTWGrade" prefWidth="174.0" text="Grade" />
+            </columns>
+        </TableView>
+        <ComboBox fx:id="choseeCourse" layoutX="232.0" layoutY="238.0" prefWidth="150.0" />
+      <VBox prefWidth="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="250.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="100.0" text="Student ID">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="100.0" text="Grade">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Label>
+         </children>
+      </VBox>
+      <VBox prefWidth="100.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="250.0">
+         <children>
+            <TextField prefHeight="30.0" />
+            <TextField prefHeight="30.0" />
+         </children></VBox>
+      <Button mnemonicParsing="false" text="Update Grade" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="320.0" />
+    </children>
+</AnchorPane>
