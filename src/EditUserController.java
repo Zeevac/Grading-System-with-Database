@@ -57,12 +57,12 @@ public class EditUserController {
 
         if (!txtUserName.getText().isEmpty()) {
             conn = DBUtil.dbConnect();
-            String query = "UPDATE user SET USER_NAME='" + username + "',PASSWORD='" + password + "' ,FIRST_NAME='" + firstname + "' ,LAST_NAME='" + lastname + "' ,EMAIL='" + email + "' , TELEPHONE='" + telephone + "' WHERE ID=" + id;
+            String query = "UPDATE users SET Username='" + username + "',Password='" + password + "',Name='" + firstname + "' ,Surname='" + lastname + "' ,Email='" + email + "' , Telephone='" + telephone + "' WHERE ID=" + id;
             Statement stmt = conn.createStatement();
             int result = stmt.executeUpdate(query);
             if (result == 1) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Güncellendi");
+                alert.setContentText("Updated.");
                 alert.showAndWait();
 
 
@@ -73,7 +73,7 @@ public class EditUserController {
             DBUtil.dbDisconnect(conn);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("username not null");
+            alert.setContentText("Username cannot be null.");
             alert.showAndWait();
 
         }
