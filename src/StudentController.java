@@ -97,6 +97,8 @@ public class StudentController {
     public void btnRegister(ActionEvent event) throws SQLException, ClassNotFoundException {
         conn = DBUtil.dbConnect();
         String courseID = txCourseID.getText();
+
+
         if (!txCourseID.getText().isEmpty()){
             try {
                 String query2 = "SELECT * FROM grades WHERE CourseID=? AND StudentID=?";
@@ -107,6 +109,11 @@ public class StudentController {
                 if (rs2.next()) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("This user has already taken this course.");
+                    alert.showAndWait();
+                }
+                else if (!isThereRoom()){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("This course is full.");
                     alert.showAndWait();
                 }
                 else {
@@ -148,7 +155,24 @@ public class StudentController {
 
     }
 
-    public void updateTable() {
+    public boolean isThereRoom() throws SQLException {
+        String courseID = txCourseID.getText();
+        String queryForQuota = "SELECT COUNT(*) FROM grades WHERE CourseID = '" + courseID + "'";
+        Statement statementForQuota = conn.createStatement();
+        ResultSet rsForQuota = statementForQuota.executeQuery(queryForQuota);
+        rsForQuota.next();
+        int numberOfEnrolled = rsForQuota.getInt(1);
+        String quota = "SELECT (Quota) FROM courses WHERE CourseID = '" + courseID + "'";
+        Statement query = conn.createStatement();
+        ResultSet rs2 = query.executeQuery(quota);
+        rs2.next();
+        int quotaOfCourse = rs2.getInt(1);
+        if (numberOfEnrolled<quotaOfCourse){
+            return true;
+        }
+        else {
+            return false;
+        }
 
     }
 
